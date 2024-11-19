@@ -1,59 +1,79 @@
-/* AdminDashboard.css */
-
 .dashboard-container {
-    padding: 200px;
+    padding: 100px 20px 20px; /* Adds top padding to create space for buttons */
     text-align: center;
     position: relative;
-  }
-  
-  .logout-button {
-    position: absolute;
-    top: 20px;
-    right: 200px;
-    padding: 5px 10px;
-    background-color: red !important; /* Force red color */
-    font-size: 12px;
-    width: auto;
-    height: auto;
-  }
-  
-  .logout-button:hover {
-    background-color: #ff6060 !important;
-  }
-  
-  .tables-container {
+}
+
+.tables-container {
+    width: 100%;
+    margin-top: 20px; /* Ensure some space below the buttons */
     display: flex;
     justify-content: space-between;
-    margin-top: 20px;
-    gap: 20px; /* Adds space between the tables */
-  }
-  
-  .table-section {
+    align-items: flex-start; /* Align tables to the top */
+    gap: 20px;
+}
+
+.table-section {
     flex: 1;
-    margin: 0 10px;
-  }
-  
-  .dashboard-table {
+    margin: 0;
+}
+
+/* Style for the tables with borders */
+.dashboard-table {
     width: 100%;
-    border-collapse: collapse;
-  }
-  
-  .dashboard-table th, .dashboard-table td {
+    border-collapse: collapse; /* Combines adjacent borders into a single line */
+    border: 1px solid #ddd; /* Border around the entire table */
+}
+
+.dashboard-table th, .dashboard-table td {
     padding: 10px;
     text-align: left;
-    border-bottom: 1px solid #ddd;
-  }
-  
-  .dashboard-table th {
+    border: 1px solid #ddd; /* Border around each cell */
+}
+
+.dashboard-table th {
     background-color: #f2f2f2;
-  }
-  
-  button {
-    margin: 5px;
+    font-weight: bold;
+}
+
+/* Logout button styling */
+.logout-button {
+    position: absolute;
+    top: 20px;
+    right: 20px;
     padding: 5px 10px;
+    background-color: red !important;
+    color: white;
+    font-size: 12px;
+    border: none;
+    border-radius: 4px;
     cursor: pointer;
-  }
-  
-  button:hover {
-    opacity: 0.8;
-  }
+    width: auto;
+    height: auto;
+}
+
+.logout-button:hover {
+    background-color: #ff6060 !important;
+}
+
+/* View requests and users buttons styling */
+.view-requests-button,
+.view-users-button {
+    position: absolute;
+    top: 20px; /* Adjusted top position to align with the logout button */
+    right: 120px; /* Position to the left of the logout button */
+    padding: 5px 10px;
+    background-color: #007bff !important;
+    color: white;
+    font-size: 12px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    width: auto;
+    height: auto;
+}
+
+.view-requests-button:hover,
+.view-users-button:hover {
+    background-color: #0056b3;
+}

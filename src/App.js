@@ -1,7 +1,9 @@
 // App.js
 import React, { useState } from 'react';
+import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
 import './App.css';
 import AdminDashboard from './AdminDashboard';
+import PendingRequests from './PendingRequests';
 import LoginPage from './LoginPage';
 
 function App() {
@@ -16,15 +18,19 @@ function App() {
   };
 
   return (
-    <div className="App">
-      {isLoggedIn ? (
-        // If logged in, show the AdminDashboard with the logout function passed in
-        <AdminDashboard onLogout={handleLogout} />
-      ) : (
-        // If not logged in, show the LoginPage
-        <LoginPage onLogin={handleLogin} />
-      )}
-    </div>
+    <Router>
+      <div className="App">
+        {isLoggedIn ? (
+          <Routes>
+            <Route path="/active-users" element={<AdminDashboard onLogout={handleLogout} />} />
+            <Route path="/pending-requests" element={<PendingRequests onLogout={handleLogout} />} />
+            <Route path="*" element={<Navigate to="/active-users" />} />
+          </Routes>
+        ) : (
+          <LoginPage onLogin={handleLogin} />
+        )}
+      </div>
+    </Router>
   );
 }
 
