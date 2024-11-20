@@ -1,5 +1,6 @@
 // LoginPage.js
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const LoginPage = ({ onLogin }) => {
   const [email, setEmail] = useState('');
@@ -11,11 +12,6 @@ const LoginPage = ({ onLogin }) => {
     } else {
       alert('Please enter both email and password');
     }
-  };
-
-  const handleSignUp = () => {
-    alert('Redirect to Sign Up page or show Sign Up form');
-    // In a real app, you would redirect to a sign-up page or show a sign-up form
   };
 
   return (
@@ -34,8 +30,9 @@ const LoginPage = ({ onLogin }) => {
         onChange={(e) => setPassword(e.target.value)}
       />
       <button onClick={handleLogin}>Login</button>
-      {/* Sign Up button */}
-      <button onClick={handleSignUp} className="sign-up-button">Or Sign Up</button>
+      <p>
+        Don't have an account? <Link to="/signup">Sign Up</Link>
+      </p>
     </div>
   );
 };

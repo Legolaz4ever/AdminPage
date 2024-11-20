@@ -5,12 +5,17 @@ import './App.css';
 import AdminDashboard from './AdminDashboard';
 import PendingRequests from './PendingRequests';
 import LoginPage from './LoginPage';
+import SignUpPage from './SignUpPage';
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   const handleLogin = () => {
     setIsLoggedIn(true);
+  };
+
+  const handleSignUp = () => {
+    setIsLoggedIn(false); // Optionally, you can redirect to the login page after sign-up
   };
 
   const handleLogout = () => {
@@ -27,7 +32,11 @@ function App() {
             <Route path="*" element={<Navigate to="/active-users" />} />
           </Routes>
         ) : (
-          <LoginPage onLogin={handleLogin} />
+          <Routes>
+            <Route path="/login" element={<LoginPage onLogin={handleLogin} />} />
+            <Route path="/signup" element={<SignUpPage onSignUp={handleSignUp} />} />
+            <Route path="*" element={<Navigate to="/login" />} />
+          </Routes>
         )}
       </div>
     </Router>

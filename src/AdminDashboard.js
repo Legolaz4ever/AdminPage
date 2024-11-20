@@ -2,33 +2,56 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './AdminDashboard.css';
+import ConfirmationModal from './ConfirmationModal';
 
 const AdminDashboard = ({ onLogout }) => {
   const navigate = useNavigate();
-
   const [activeUsers] = useState([
     { id: 3, name: 'Farmer A', role: 'Farmer', location: 'Green Acres' },
     { id: 4, name: 'Buyer B', role: 'Buyer', location: 'Urban City' },
   ]);
+  const [showModal, setShowModal] = useState(false);
+  const [modalAction, setModalAction] = useState(null);
+  const [selectedUserId, setSelectedUserId] = useState(null);
 
   const handleEdit = (id) => {
     alert(`Edit user with ID: ${id}`);
   };
 
   const handleDelete = (id) => {
-    alert(`Deleted user with ID: ${id}`);
+    setSelectedUserId(id);
+    setModalAction('delete');
+    setShowModal(true);
+    console.log('Delete button clicked, showModal:', showModal); // Add this line
+  };
+  
+  const handleReject = (id) => {
+    setSelectedUserId(id);
+    setModalAction('reject');
+    setShowModal(true);
+    console.log('Reject button clicked, showModal:', showModal); // For debugging
+  };
+
+  const confirmAction = () => {
+    if (modalAction === 'delete') {
+      console.log(`Deleted user with ID: ${selectedUserId}`);
+    } else if (modalAction === 'reject') {
+      console.log(`Rejected user with ID: ${selectedUserId}`);
+    }
+    setShowModal(false);
+  };
+
+  const cancelAction = () => {
+    setShowModal(false); // Close the modal without action
   };
 
   return (
     <div className="dashboard-container">
-      {/* Button container for the navigation buttons */}
       <div className="button-container">
         <button onClick={() => navigate('/pending-requests')} className="view-requests-button">
           View Pending Requests
         </button>
-        <button onClick={onLogout} className="logout-button">
-          Log Out
-        </button>
+        <button onClick={onLogout} className="logout-button">Log Out</button>
       </div>
 
       <h2>Active Users</h2>
@@ -57,6 +80,18 @@ const AdminDashboard = ({ onLogout }) => {
           </tbody>
         </table>
       </div>
+
+      {/* Render ConfirmationModal if showModal is true */}
+      {showModal && (
+  <>
+    {console.log('Modal action:', modalAction)} {/* For debugging */}
+    <ConfirmationModal
+      message="Are you sure you want to proceed?"
+      onConfirm={confirmAction}
+      onCancel={cancelAction}
+    />
+  </>
+)}
     </div>
   );
 };
