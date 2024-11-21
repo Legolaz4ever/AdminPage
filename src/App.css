@@ -10,6 +10,13 @@ body, html {
   font-family: Arial, sans-serif;
 }
 
+/* Style for the logo */
+.logo {
+  width: 150px; /* Adjust the size as needed */
+  height: auto;
+  margin-bottom: 20px; /* Adds space below the logo */
+}
+
 .login-container {
   display: flex;
   flex-direction: column;

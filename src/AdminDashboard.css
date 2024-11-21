@@ -1,8 +1,9 @@
 .dashboard-container {
-    padding: 100px 20px 20px; /* Adds top padding to create space for buttons */
-    text-align: center;
-    position: relative;
-}
+    position: absolute;
+    top: 20px; /* Adjust top offset */
+    left: 50px; /* Adjust left offset */
+    width: calc(100% - 100px); /* Optional: Adjust width */
+  }
 
 .tables-container {
     width: 100%;
@@ -31,25 +32,24 @@
     border: 1px solid #ddd; /* Border around each cell */
 }
 
-.dashboard-table th {
+/* .dashboard-table th {
     background-color: #f2f2f2;
     font-weight: bold;
-}
+} */
 
-/* Logout button styling */
+
 .logout-button {
     position: absolute;
-    top: 20px;
-    right: 20px;
+    right: 0px;
     padding: 5px 10px;
     background-color: red !important;
     color: white;
-    font-size: 12px;
+    font-size: 16px;
     border: none;
     border-radius: 4px;
     cursor: pointer;
-    width: auto;
-    height: auto;
+    width: 100px;
+    height: 40px;
 }
 
 .logout-button:hover {
@@ -60,17 +60,17 @@
 .view-requests-button,
 .view-users-button {
     position: absolute;
-    top: 20px; /* Adjusted top position to align with the logout button */
+    top: 0px; /* Adjusted top position to align with the logout button */
     right: 120px; /* Position to the left of the logout button */
     padding: 5px 10px;
     background-color: #007bff !important;
     color: white;
-    font-size: 12px;
+    font-size: 16px;
     border: none;
     border-radius: 4px;
     cursor: pointer;
-    width: auto;
-    height: auto;
+    width: 200px;
+    height: 40px;
 }
 
 .view-requests-button:hover,

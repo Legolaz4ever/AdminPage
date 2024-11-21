@@ -6,9 +6,16 @@ import ConfirmationModal from './ConfirmationModal';
 
 const AdminDashboard = ({ onLogout }) => {
   const navigate = useNavigate();
-  const [activeUsers] = useState([
+  const [activeUsers, setActiveUsers] = useState([
     { id: 3, name: 'Farmer A', role: 'Farmer', location: 'Green Acres' },
     { id: 4, name: 'Buyer B', role: 'Buyer', location: 'Urban City' },
+    { id: 5, name: 'Buyer C', role: 'Buyer', location: 'Astana' },
+    { id: 6, name: 'Buyer D', role: 'Farmer', location: 'Urban City' },
+    { id: 3, name: 'Farmer A', role: 'Farmer', location: 'Green Acres' },
+    { id: 4, name: 'Buyer B', role: 'Buyer', location: 'Urban City' },
+    { id: 5, name: 'Buyer C', role: 'Buyer', location: 'Astana' },
+    { id: 6, name: 'Buyer D', role: 'Farmer', location: 'Urban City' },
+
   ]);
   const [showModal, setShowModal] = useState(false);
   const [modalAction, setModalAction] = useState(null);
@@ -34,6 +41,7 @@ const AdminDashboard = ({ onLogout }) => {
 
   const confirmAction = () => {
     if (modalAction === 'delete') {
+      setActiveUsers((prevUsers) => prevUsers.filter((user) => user.id !== selectedUserId));
       console.log(`Deleted user with ID: ${selectedUserId}`);
     } else if (modalAction === 'reject') {
       console.log(`Rejected user with ID: ${selectedUserId}`);

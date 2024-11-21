@@ -10,6 +10,8 @@ const PendingRequests = ({ onLogout }) => {
   const [pendingFarmers] = useState([
     { id: 1, name: 'Pending Farmer 1', location: 'Farmville' },
     { id: 2, name: 'Pending Farmer 2', location: 'Countryside' },
+    { id: 3, name: 'Pending Farmer 3', location: 'Astana' },
+    { id: 4, name: 'Pending Farmer 4', location: 'Almaty' },
   ]);
 
   const handleApprove = (id) => {
